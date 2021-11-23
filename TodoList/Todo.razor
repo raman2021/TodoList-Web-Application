@@ -1,0 +1,57 @@
+﻿
+@page "/todo"
+   // initial mark, adding razar pages which will holds each page behaviour in razar component item
+
+<h1>Todo(@todos.Count(todo=>!todo.IsDone))</h1>
+  // put todo in h1 tag
+  //to show the count of todos items that arenot complete
+
+<ul> 
+
+ // add an unorderd list markup foreach loop to render each todo item as a list item
+    @foreach (var todo in todos )
+            {
+
+        // adding list item in unorderd list
+        // input type for checkbox and bind todo.IsDone
+        // add input elements to bind the todo.title
+                <li>
+                    <input type="checkbox" @bind="todo.IsDone" />
+                    <input @bind="todo.Title" />
+                </li>
+            }
+</ul>
+     // for the app to work properly need ui elements to add the todo item in a todo list
+
+
+<input placeholder="Something to do..." @bind="newTodo"/>
+      // bind newTodo in input
+// placeholder suggest to the user what he/she suppose to do
+<button @onclick="AddTodo">Add todo</button>
+     // adding button in C# and put it on the onclick method
+
+@code {
+    //add a field for the todoitem in the code block
+
+    // in code block, create a private variable of type ilist todo item which will initialize a new list of todos
+    private IList<TodoItem> todos = new List<TodoItem>();
+
+    //to get the title of new todo item, add new todo string
+    private string newTodo;
+
+    // add a shell of a method
+    private void AddTodo()
+    {
+        // update the addTodo method to add the todo item with the specify title to the list
+        if(!string.IsNullOrWhiteSpace(newTodo))
+            // if is is null or whitespace then do something
+        {
+            todos.Add(new TodoItem { Title = newTodo });
+
+            //make string empty beacuse it is already picked up or clearing the text
+            newTodo = string.Empty;
+        }
+    }
+}
+
+
