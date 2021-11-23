@@ -1,14 +1,14 @@
 ﻿
 @page "/todo"
-   // initial mark, adding razar pages which will holds each page behaviour in razar component item
+    <!--initial mark, adding razar pages which will holds each page behaviour in razar component item-->
 
 <h1>Todo(@todos.Count(todo=>!todo.IsDone))</h1>
-  // put todo in h1 tag
-  //to show the count of todos items that arenot complete
+  <!--put todo in h1 tag-->
+  <!--to show the ciunt of todos items that are not complete-->
 
 <ul> 
 
- // add an unorderd list markup foreach loop to render each todo item as a list item
+  // <!--add an unorderd list markup foreach loop to render each todo item as a list item-->
     @foreach (var todo in todos )
             {
 
@@ -21,14 +21,14 @@
                 </li>
             }
 </ul>
-     // for the app to work properly need ui elements to add the todo item in a todo list
+@*for the app to work properly need ui elements to add the todo item in a todo list*@
 
 
 <input placeholder="Something to do..." @bind="newTodo"/>
-      // bind newTodo in input
-// placeholder suggest to the user what he/she suppose to do
+ <!--bind newTodo in input-->
+ <!--placeholder suggest to the user what he/she suppose to do-->
 <button @onclick="AddTodo">Add todo</button>
-     // adding button in C# and put it on the onclick method
+   <!--adding button in C# and put it on the onclick method-->
 
 @code {
     //add a field for the todoitem in the code block
